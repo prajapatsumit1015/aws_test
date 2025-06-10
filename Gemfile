@@ -61,3 +61,13 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "capistrano"
+
+gem "capistrano-rails"
+
+gem "capistrano-bundler"
+
+gem "capistrano-rbenv"
+
+gem "capistrano3-puma"
