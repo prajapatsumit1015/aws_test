@@ -14,6 +14,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :keep_releases, 5
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.3'
+set :default_env, { 'SECRET_KEY_BASE' => ENV['SECRET_KEY_BASE'] }
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 set :puma_state, "#{shared_path}/tmp/pids/puma.state"
