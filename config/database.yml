@@ -18,7 +18,10 @@ test:
 
 
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: aws_test_production
   username: postgres
   password: postgres
+  host: localhost
+  port: 5432
