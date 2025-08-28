@@ -12,8 +12,6 @@ require "capistrano/bundler"
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require "capistrano/rbenv"
-set :rbenv_type, :user
-set :rbenv_ruby, '3.2.0'
 require "capistrano/puma" 
 install_plugin Capistrano::SCM::Git
 
