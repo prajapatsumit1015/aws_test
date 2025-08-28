@@ -1,8 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.19.2"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "aws_test"
 
 set :repo_url, "git@github.com:prajapatsumit1015/aws_test.git"
 set :deploy_to, '/home/ubuntu/aws_test'
