@@ -7,7 +7,7 @@ lock "~> 3.19.2"
 set :application, 'urlshortner'
 set :repo_url, 'git@github.com:prajapatsumit1015/aws_test.git'
 set :branch, :master
-set :deploy_to, '/home/deploy/urlshortner'
+set :deploy_to, '/home/ubuntu/urlshortner'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
