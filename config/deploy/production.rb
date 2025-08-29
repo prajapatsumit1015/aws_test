@@ -1,4 +1,4 @@
-server "13.62.102.227", user: "ubuntu", roles: %w{app db web}
+server "16.171.139.74", user: "ubuntu", roles: %w{app db web}
 
 
 set :ssh_options, {

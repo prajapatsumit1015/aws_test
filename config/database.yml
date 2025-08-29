@@ -25,3 +25,29 @@ production:
   password: postgres
   host: localhost
   port: 5432
+
+# Action Cable production (cable) database
+cable:
+  adapter: postgresql
+  encoding: unicode
+  database: aws_test_production
+  username: postgres
+  password: postgres
+  host: localhost
+
+queue:
+  adapter: postgresql
+  encoding: unicode
+  database: aws_test_production
+  username: postgres
+  password: postgres
+  host: localhost
+
+
+cache:
+  adapter: postgresql
+  encoding: unicode
+  database: aws_test_production
+  username: postgres
+  password: postgres
+  host: localhost
