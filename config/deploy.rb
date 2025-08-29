@@ -4,16 +4,20 @@
 # config valid only for current version of Capistrano
 lock "~> 3.19.2"
 
-set :application, 'urlshortner'
+set :application, 'aws_test'
 set :repo_url, 'git@github.com:prajapatsumit1015/aws_test.git'
 set :branch, :master
-set :deploy_to, '/home/ubuntu/urlshortner'
+set :deploy_to, '/home/ubuntu/aws_test'
 set :pty, true
-set :linked_files, %w{config/database.yml config/application.yml config/master.key}
+set :linked_files, %w{config/database.yml config/application.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 set :keep_releases, 5
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.3'
+set :default_env, { 
+  'SECRET_KEY_BASE' => ENV['SECRET_KEY_BASE'],
+  'RAILS_MASTER_KEY' => File.read('config/master.key').strip
+}
 
 
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
@@ -63,18 +67,21 @@ set :puma_preload_app, false
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-# namespace :deploy do
+namespace :deploy do
 
-#   after :restart, :clear_cache do
-#     on roles(:web), in: :groups, limit: 3, wait: 10 do
-#       # Here we can do anything such as:
-#       # within release_path do
-#       #   execute :rake, 'cache:clear'
-#       # end
-#     end
-#   end
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
 
-# end
+end
+
+# Skip migrations for now due to credentials issue
+Rake::Task["deploy:migrate"].clear_actions
 
 
 
@@ -89,3 +96,13 @@ namespace :deploy do
     end
   end
 end
+
+
+# set :application, 'aws_test'
+# # set :repo_url, 'git@github.com:prajapatsumit1015/aws_test.git'
+# set :branch, :master #use `git rev-parse --abbrev-ref HEAD`.chomp for pick current branch
+# set :deploy_to, '/home/ubuntu/aws_test'
+# set :pty, true
+# set :linked_files, %w{config/database.yml config/master.key} #if rails 5.2 & above master.key is used insted of application.yml
+# set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+# set :keep_releases, 5
